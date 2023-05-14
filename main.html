@@ -57,6 +57,27 @@
         if (callNow) func.apply(context, args);
       };
     }
+  function addslide() {
+        var img = document.querySelectorAll(".slide-in");
+
+        img.forEach((element) => {
+          var scrolledheight =
+            window.scrollY + window.innerHeight - element.height / 2;
+          var imgbottomheight = element.offsetTop + element.height;
+
+          var half = scrolledheight > element.offsetTop;
+          var full = window.scrollY > imgbottomheight;
+
+          if (half && !full) {
+            element.classList.add("active");
+          } else {
+            element.classList.remove("active");
+          }
+        });
+
+       
+      }
+ window.addEventListener("scroll", debounce(addslide));
 
   </script>
 
